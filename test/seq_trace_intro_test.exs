@@ -3,6 +3,7 @@ defmodule SeqTraceIntroTest do
   doctest SeqTraceIntro
 
   test "greets the world" do
-    assert SeqTraceIntro.hello() == :world
+    :httpc.request('http://localhost:4001/hello')
+    |> IO.inspect()
   end
 end
