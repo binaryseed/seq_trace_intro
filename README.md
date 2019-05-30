@@ -1,4 +1,4 @@
-# SeqTraceIntro
+# `seq_trace` demonstration
 
 This app serves as a small demo of putting together:
 
@@ -12,4 +12,4 @@ A test adds a few `telemetry` handlers, the first of which will _start_ a `seq_t
 
 The plug spawns a few nested `Task`s and is able to fetch the cross-process trace context:
 
-* [lib/seq_trace_intro/plug.ex](https://https://github.com/binaryseed/seq_trace_intro/blob/master/lib/seq_trace_intro/plug.ex#L21)
+* [lib/seq_trace_intro/plug.ex](https://github.com/binaryseed/seq_trace_intro/blob/master/lib/seq_trace_intro/plug.ex#L21)
