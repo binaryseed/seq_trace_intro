@@ -1,4 +1,6 @@
-# `seq_trace` demonstration
+# `seq_trace`
+
+* http://erlang.org/doc/man/seq_trace.html
 
 This app serves as a small demo of putting together:
 
