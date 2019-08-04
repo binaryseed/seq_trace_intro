@@ -21,7 +21,8 @@ defmodule SeqTraceIntro.MixProject do
   defp deps do
     [
       {:plug_cowboy, "~> 2.0"},
-      {:telemetry, "~> 0.4"}
+      {:telemetry, "~> 0.4"},
+      {:benchee, "~> 1.0", only: :dev}
     ]
   end
 end
