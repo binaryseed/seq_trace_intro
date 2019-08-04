@@ -97,9 +97,33 @@ defmodule Pdict.Propigator do
   end
 end
 
+defmodule Manual.Propigator do
+  @moduledoc """
+  This propigator manually passes the token as part of
+  the message to the worker process
+  """
+  def run(%{trace_id: trace_id} = _token) do
+    pid = spawn(__MODULE__, :child_worker, [self()])
+
+    send(pid, {:trace_id_please, %{trace_id: trace_id}})
+
+    receive do
+      %{trace_id: ^trace_id} -> :got_it
+    end
+  end
+
+  def child_worker(parent) do
+    receive do
+      {:trace_id_please, token} ->
+        send(parent, token)
+    end
+  end
+end
+
 Benchee.run(
   %{
     "hard coded control" => &HardCoded.Propigator.run/1,
+    "manual token passing" => &Manual.Propigator.run/1,
     "seq_trace label" => &SeqTrace.Propigator.run/1,
     "process dictionary storage" => &Pdict.Propigator.run/1
   },
